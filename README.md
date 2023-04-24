@@ -5,7 +5,7 @@ The timezone in the containers is inherited from the local time zone on the dock
 
 **Requirements**
 
-You need a x86-64 based Linux host system with installed docker engine and docker-compose.
+You need a x86-64 based Linux host system with installed docker engine and docker compose.
 
 **Upgrades**
 
@@ -22,8 +22,8 @@ The apt-key command will be deprecated after Debian 11 and Ubuntu 22.04 releases
 
 ```
 git clone https://github.com/rofeitosa/bacula-ce
-cd bacula-ufs
-docker-compose up -d
+cd bacula-ce
+docker compose up -d
 ```
 
 ## Setup / Configuration
@@ -63,8 +63,8 @@ To adapt the configuration to you personal needs, you can either edit the config
 ## Tests
 
 Login to the Baculum Web page at http://docker-host:9095
-Open the Bacula Console with clicking on ">_".  
-Type "status all" and click on "Enter".  
+Open the Bacula Console with clicking on ">_". 
+Type "status all" and click on "Enter". 
 Check the output for any faults.
 
 **![test01.png](screenshots/test01.png)**

@@ -29,6 +29,10 @@ COPY files/api.conf /usr/share/baculum/htdocs/protected/API/Config/api.conf
 
 RUN chown -R www-data:www-data /etc/baculum/
 
+#Dando permissão ao usuário Web Server para alterar os arquivos de configuração do Bacula
+RUN groupadd -g 1000 bdocker \
+    && usermod -aG bdocker www-data
+
 RUN mkdir -p /run/php
 
 RUN a2enmod rewrite
