@@ -1,0 +1,5 @@
+# Bacula Community
+# Key = 64393bc3a8bf5
+# Bacula version = 13.0.2
+deb [signed-by=/usr/share/keyrings/bacula-archive-keyring.gpg] https://www.bacula.org/packages/64393bc3a8bf5/debs/13.0.2 bullseye main
+

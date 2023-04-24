@@ -1,0 +1,100 @@
+version: '3.1'
+
+services:
+  db:
+    image: rofeitosa/bacula-catalog:13.0.2          
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: bacula
+      POSTGRES_PASSWORD: bacula
+      POSTGRES_DB: bacula
+    ports:
+      - 5432:5432
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - pgdata_13:/var/lib/postgresql/data:rw
+      - bcworking:/opt/bacula/working:rw
+
+
+  bacula-dir:
+    image: rofeitosa/bacula-director:13.0.2
+    restart: unless-stopped
+    volumes:
+      - ./etc:/opt/bacula/etc:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - bcworking:/opt/bacula/working:rw
+    depends_on: 
+      - db     
+    ports:
+      - 9101:9101
+
+
+  bacula-sd:
+    image: rofeitosa/bacula-storage:13.0.2
+    restart: unless-stopped
+    depends_on:
+      - bacula-dir
+      - db
+    volumes:
+      - ./etc:/opt/bacula/etc:ro
+      - /backup:/backup:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - bcworking:/opt/bacula/working:rw
+    ports:
+      - 9103:9103
+
+
+  bacula-fd:
+    image: rofeitosa/bacula-client:13.0.2
+    restart: unless-stopped
+    depends_on:
+      - bacula-sd
+      - bacula-dir
+      - db
+    volumes:
+      - ./etc:/opt/bacula/etc:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - bcworking:/opt/bacula/working:rw
+    ports:
+      - 9102:9102
+
+
+  baculum-api:
+    image: rofeitosa/baculum-api:11.0.6
+    restart: unless-stopped
+    depends_on:
+      - db
+      - bacula-dir
+    volumes:
+      - ./etc:/opt/bacula/etc:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - ./baculum-api/files/api.conf:/usr/share/baculum/htdocs/protected/API/Config/api.conf:rw
+    ports:
+      - 9096:9096
+
+
+  baculum-web:
+    image: rofeitosa/baculum-web:11.0.6
+    restart: unless-stopped
+    depends_on:
+      - db
+      - bacula-dir
+      - baculum-api
+    volumes:
+      - ./etc/bconsole.conf:/opt/bacula/etc/bconsole.conf:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - bwebconfig:/usr/share/baculum/htdocs/protected/Web/Config:rw
+    ports:
+      - 9095:9095
+
+volumes: 
+  pgdata_13:
+  bcworking:
+  bwebconfig:
+

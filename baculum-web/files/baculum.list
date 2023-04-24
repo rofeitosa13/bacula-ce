@@ -1,0 +1,2 @@
+deb [signed-by=/usr/share/keyrings/baculum-archive-keyring.gpg] http://www.bacula.org/downloads/baculum/stable-11/debian bullseye main
+deb-src [signed-by=/usr/share/keyrings/baculum-archive-keyring.gpg] http://www.bacula.org/downloads/baculum/stable-11/debian bullseye main
