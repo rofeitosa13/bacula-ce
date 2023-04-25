@@ -31,7 +31,7 @@ docker-compose up -d
 
 **Configuração da API do Baculum**
 
-Abra o site da API Baculum em http://<docker-host>:9096
+Abra o site da API Baculum em http://docker-host:9096
 O login padrão é:
 
 - nome de usuário = admin
@@ -45,7 +45,7 @@ Para obter mais detalhes sobre a configuração da API do Baculum, consulte a do
 
 **Configuração web do Baculum**
 
-Abra a página da Web do Baculum em http://<docker-host>:9095
+Abra a página da Web do Baculum em http://docker-host:9095
 Você precisa passar pelos formulários de configuração.
 Na página "Add API host" adicione "baculum-api" no campo "IP-Address/Hostname", este é o padrão definido no docker-compose.yaml.
 
@@ -67,7 +67,7 @@ Para o funcionamento correto do Bacula nos clientes, é necessário configurar o
 
 ## Testes
 
-Faça login na página da Web do Baculum em http://<docker-host>:9095
+Faça login na página da Web do Baculum em http://docker-host:9095
 Abra o Console do Bacula clicando em ">_".
 Digite "status all" e clique em "Enter".
 Verifique a saída quanto a falhas.
@@ -83,7 +83,7 @@ Para habilitar a criptografia SSL para o acesso baculum-api e baculum-web, você
 
 Se você quiser personalizar ou criar as imagens por conta própria, precisará obter sua chave de acesso em https://www.bacula.org/bacula-binary-package-download/ . Depois de obter sua própria chave de acesso, você precisa substituir "ACCESS_KEY"  no arquivo  "bacula-ce/bacula-base/files/Bacula-Community.list" por sua própria chave.
 
-O PostgreSQL 15.2 (versão mais nova em abrl/2023) é plenamente compatível com o Bacula 13.0.2. Porém, para o funcionamento do Baculum 11.0.2, deve ser usado como catálogo do sistema o PostgreSQL versão 13 ou anteriores devido a imcompatibilidades da biblioteca PHP-PDO utilizada pelo Baculum.
+O PostgreSQL 15.2 (versão mais nova em 04/2023) é plenamente compatível com o Bacula 13.0.2. Porém, para o funcionamento do Baculum 11.0.2, deve ser usado como catálogo do sistema o PostgreSQL versão 13 ou anteriores devido a imcompatibilidades da biblioteca PHP-PDO utilizada pelo Baculum.
 
 ## Links
 
