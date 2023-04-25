@@ -30,7 +30,7 @@ docker compose up -d
 
 **Baculum API configuration**
 
-Open the Baculum API Website at http://<docker-host>:9096
+Open the Baculum API Website at http://docker-host:9096
 The default login is:
 
 - username = admin
@@ -44,7 +44,7 @@ For more details on the Baculum API configuration, consult the linked documentat
 
 **Baculum web configuration**
 
-Open the Baculum Web page at http://<docker-host>:9095
+Open the Baculum Web page at http://docker-host:9095
 You need to go through the configuration forms.
 On the page "Add API host" add "baculum-api" in the field "IP-Address/Hostname", this is the default set in the docker-compose.yaml.
 
@@ -82,7 +82,7 @@ To enable SSL encryption for the baculum-api and baculum-web access, you can add
 
 If you want to customize or build the images on your own, you need to get your access key from https://www.bacula.org/bacula-binary-package-download/ . After you get your own access key, you need to replace "ACCESS_KEY"  in the file  "bacula-ce/Bacula_Common/files/Bacula-Community.list" with your own key.
 
-PostgreSQL 15.2 (newest version in abrl/2023) is fully compatible with Bacula 13.0.2. However, for the functioning of Baculum 11.0.2, PostgreSQL version 13 or earlier should be used as the system catalog due to incompatibilities of the PHP-PDO library used by Baculum.
+PostgreSQL 15.2 (newest version in 04/2023) is fully compatible with Bacula 13.0.2. However, for the functioning of Baculum 11.0.2, PostgreSQL version 13 or earlier should be used as the system catalog due to incompatibilities of the PHP-PDO library used by Baculum.
 
 ## Links
 
