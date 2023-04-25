@@ -60,6 +60,10 @@ This seems to be a bug of Baculum Web.
 The included example configuration uses a volume to share the bacula working directory /opt/bacula/working . This allows to backup the catalog db dumps.
 To adapt the configuration to you personal needs, you can either edit the config files in /etc or change the config in the Baculum Web Gui.
 
+**Bacula Client Configuration**
+
+For Bacula to work properly on clients, you need to configure DNS for Bacula Storage Daemon (bacula-sd) or the /etc/hosts file on Linux client or C:/Windows/System32/Drivers/etc/hosts on Windows.
+
 ## Tests
 
 Login to the Baculum Web page at http://docker-host:9095

@@ -19,7 +19,6 @@ O comando apt-key será descontinuado após as versões Debian 11 e Ubuntu 22.04
 "The apt-key man page mentions that the "use of apt-key is deprecated, except for the use of apt-key del in maintainer scripts to remove existing keys from the main keyring". What's more, "apt-key will last be available in Debian 11 and Ubuntu 22.04."" (https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html)
 
 
-
 **Baixe as imagens do Docker**
 
 ```
@@ -61,6 +60,10 @@ Isso parece ser um bug do Baculum Web.
 
 A configuração de exemplo incluída usa um volume para compartilhar o diretório de trabalho do bacula /opt/bacula/working. Isso permite fazer backup dos despejos de banco de dados do catálogo.
 Para adaptar a configuração às suas necessidades pessoais, você pode editar os arquivos de configuração em /etc ou alterar a configuração no Baculum Web Gui.
+
+**Configuração do Bacula Client**
+
+Para o funcionamento correto do Bacula nos clientes, é necessário configurar o DNS para o Bacula Storage Daemon (bacula-sd) ou o arquivo /etc/hosts no cliente Linux ou C:/Windows/System32/Drivers/etc/hosts no Windows.
 
 ## Testes
 
