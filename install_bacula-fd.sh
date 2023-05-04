@@ -5,8 +5,7 @@
 # Data: 03-05-2023
 
 echo "Baixando a chave de assinatura do repositorio"
-wget -qO- https://www.bacula.org/downloads/Bacula-4096-Distribution-Verification-key.asc \
-        | gpg --dearmor | tee /usr/share/keyrings/bacula-archive-keyring.gpg
+wget -qO- https://www.bacula.org/downloads/Bacula-4096-Distribution-Verification-key.asc | gpg --dearmor | tee /usr/share/keyrings/bacula-archive-keyring.gpg
 
 # Defina o endereço do repositorio com a versao mais proxima da versao do SO cliente. Versoes disponiveis para distro Debian/Ubuntu:
 # Debian -> bullseye (11.0), buster (10.0)
@@ -20,8 +19,8 @@ apt-get install -y apt-transport-https
 echo "Adicionando o repositorio do Bacula na lista do apt"
 echo "deb [signed-by=/usr/share/keyrings/bacula-archive-keyring.gpg] https://www.bacula.org/packages/64393bc3a8bf5/debs/13.0.2 $DISTRO main" > /etc/apt/sources.list.d/bacula-community.list
 
-echo "Atualizando o repositorio local e instalando dependências"
-apt-get update | apt-get install -y apt-transport-https
+echo "Atualizando o repositorio local"
+apt-get update 
 
 echo "Instalando o Bacula Client"
 apt-get install -y bacula-client
@@ -29,11 +28,19 @@ apt-get install -y bacula-client
 echo " "
 echo "Instalação finalizada."
 
+if [ -e /etc/bacula/bacula-fd.conf ]
+then
+    CONFIGFILE=/etc/bacula/bacula-fd.conf
+else
+    CONFIGFILE=/opt/bacula/etc/bacula-fd.conf
+fi
+
 echo " "
 echo "Pre-configurando o File Daemon do cliente"
-cp /etc/bacula/bacula-fd.conf /etc/bacula/bacula-fd.conf.bkp
-sed -i s/$(hostname -s)-dir/bacula-dir/g /etc/bacula/bacula-fd.conf
-sed -i s/$(hostname -s)-mon/bacula-mon/g /etc/bacula/bacula-fd.conf
+
+cp $CONFIGFILE $CONFIGFILE.bkp
+sed -i s/$(hostname -s)-dir/bacula-dir/g CONFIGFILE
+sed -i s/$(hostname -s)-mon/bacula-mon/g CONFIGFILE
 
 echo " "
 echo "Recarregando o Bacula Client"
