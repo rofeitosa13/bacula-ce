@@ -14,6 +14,9 @@ wget -qO- https://www.bacula.org/downloads/Bacula-4096-Distribution-Verification
 
 DISTRO=bullseye
 
+echo "Instalando dependências"
+apt-get install -y apt-transport-https
+
 echo "Adicionando o repositorio do Bacula na lista do apt"
 echo "deb [signed-by=/usr/share/keyrings/bacula-archive-keyring.gpg] https://www.bacula.org/packages/64393bc3a8bf5/debs/13.0.2 $DISTRO main" > /etc/apt/sources.list.d/bacula-community.list
 
@@ -31,6 +34,10 @@ echo "Pre-configurando o File Daemon do cliente"
 cp /etc/bacula/bacula-fd.conf /etc/bacula/bacula-fd.conf.bkp
 sed -i s/$(hostname -s)-dir/bacula-dir/g /etc/bacula/bacula-fd.conf
 sed -i s/$(hostname -s)-mon/bacula-mon/g /etc/bacula/bacula-fd.conf
+
+echo " "
+echo "Recarregando o Bacula Client"
+service bacula-fd force-reload
 
 echo " "
 echo " "
