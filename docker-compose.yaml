@@ -73,7 +73,7 @@ services:
       - ./etc:/opt/bacula/etc:rw
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      - ./baculum-api/files/api.conf:/usr/share/baculum/htdocs/protected/API/Config/api.conf:rw
+      - bapiconfig:/usr/share/baculum/htdocs/protected/API/Config:rw
     ports:
       - 9096:9096
 
@@ -97,4 +97,4 @@ volumes:
   pgdata_13:
   bcworking:
   bwebconfig:
-
+  bapiconfig:
