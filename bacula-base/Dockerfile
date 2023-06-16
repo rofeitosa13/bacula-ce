@@ -25,7 +25,9 @@ RUN apt-get update \
 		bacula-common \
 		bacula-console \
 		bacula-client \
-		bacula-aligned
+		bacula-aligned \
+		bacula-cloud-storage-common \
+		bacula-cloud-storage-s3 
 
 RUN for i in `ls /opt/bacula/bin`; do ln -s /opt/bacula/bin/$i /usr/sbin/$i; done
 RUN rm /etc/apt/sources.list.d/Bacula-Community.list

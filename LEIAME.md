@@ -18,6 +18,8 @@ Desde a última atualização dessa imagem pelo 'ixxoid', o Bacula foi atualizad
 O comando apt-key será descontinuado após as versões Debian 11 e Ubuntu 22.04, conforme indicado abaixo.
 "The apt-key man page mentions that the "use of apt-key is deprecated, except for the use of apt-key del in maintainer scripts to remove existing keys from the main keyring". What's more, "apt-key will last be available in Debian 11 and Ubuntu 22.04."" (https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html)
 
+- Suporte a sincronização em nuvem
+Foram incluidos os módulos bacula-cloud-storage-common e bacula-cloud-storage-s3 para sincronização em nuvem com S3FS.
 
 **Baixe as imagens do Docker**
 
