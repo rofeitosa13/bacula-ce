@@ -81,6 +81,8 @@ Verifique a saída quanto a falhas.
 Você pode querer limitar o acesso à porta 5432 do banco de dados.
 Para habilitar a criptografia SSL para o acesso baculum-api e baculum-web, você pode adicionar um proxy reverso ao docker-compose.yaml
 
+Não esquecer de alterar a senha do Catalog (banco de dados do Bacula) nos arquivos docker-compose.yaml e bacula-dir.conf.
+
 ## Personalizar / Construir as imagens
 
 Se você quiser personalizar ou criar as imagens por conta própria, precisará obter sua chave de acesso em https://www.bacula.org/bacula-binary-package-download/ . Depois de obter sua própria chave de acesso, você precisa substituir "ACCESS_KEY"  no arquivo  "bacula-ce/bacula-base/files/Bacula-Community.list" por sua própria chave.
