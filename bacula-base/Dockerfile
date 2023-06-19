@@ -11,7 +11,8 @@ RUN apt-get update \
 		gnupg \
 		ca-certificates \
 		wget \
-		ntp
+		ntp \
+		s3fs 
 
 RUN cd /tmp
 RUN wget -qO- https://www.bacula.org/downloads/Bacula-4096-Distribution-Verification-key.asc \
