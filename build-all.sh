@@ -17,3 +17,5 @@ sleep 1
 docker build -t rofeitosa/baculum-web:11.0.6 baculum-web/.
 
 echo "BUILD FINALIZADO!"
+
+chmod 775 ./etc/*

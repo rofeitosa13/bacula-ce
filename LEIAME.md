@@ -23,9 +23,12 @@ Foram incluidos os módulos bacula-cloud-storage-common e bacula-cloud-storage-s
 
 **Baixe as imagens do Docker**
 
+Obs.: Antes de subir os containers, verifique se os arquivos de configuração contidos na pasta ./etc possuem as permissões 775.
+
 ```
 git clone https://github.com/rofeitosa/bacula-ce
 cd bacula-ce
+./build-all.sh
 docker-compose up -d
 ```
 

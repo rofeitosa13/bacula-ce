@@ -23,9 +23,12 @@ It were included bacula-cloud-storage-common and bacula-cloud-storage-s3 modules
 
 **Download the Docker images**
 
+Note: Before uploading the containers, check if the configuration files contained in the ./etc folder have 775 permissions.
+
 ```
 git clone https://github.com/rofeitosa/bacula-ce
 cd bacula-ce
+./build-all.sh
 docker compose up -d
 ```
 
