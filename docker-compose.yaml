@@ -39,7 +39,7 @@ services:
       - db
     volumes:
       - ./etc:/opt/bacula/etc:ro
-      - /backup:/backup:rw
+      - ./volumes:/var/lib/bacula:rw
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
       - bcworking:/opt/bacula/working:rw
